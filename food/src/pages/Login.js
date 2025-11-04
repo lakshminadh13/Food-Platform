@@ -1,46 +1,69 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "../index.css";
 
-function Login({ setIsLoggedIn }) {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (email && password) {
-      setIsLoggedIn(true);
-      navigate("/");
-    } else {
-      alert("Please enter valid credentials!");
+
+    // Minimal validation:
+    if (!email.trim() || !password.trim()) {
+      alert("Please enter email and password");
+      return;
     }
+
+    // Simulate login success
+    // IMPORTANT: we do NOT rely on app-level auth state here (keeps it simple)
+    // Navigate to home page:
+    navigate("/", { replace: true });
   };
 
   return (
-    <div className="auth-bg">
-      <div className="auth-container">
-        <h2>Login</h2>
+    <div
+      className="auth-container"
+      style={{
+        backgroundImage:
+          'url("https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=1740&q=80")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="auth-box" role="region" aria-labelledby="login-heading">
+        <h2 id="login-heading">Welcome back 👋</h2>
+
         <form className="auth-form" onSubmit={handleLogin}>
           <input
             type="email"
-            placeholder="Enter Email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            aria-label="Email"
             required
           />
+
           <input
             type="password"
-            placeholder="Enter Password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            aria-label="Password"
             required
           />
+
           <button type="submit">Login</button>
         </form>
-        <p>Don't have an account? <a href="/register">Register here</a></p>
+
+        <p style={{ marginTop: 12 }}>
+          Don't have an account?{" "}
+          <Link to="/register" className="link">
+            Register here
+          </Link>
+        </p>
       </div>
     </div>
   );
 }
-
-export default Login;

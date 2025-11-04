@@ -1,4 +1,4 @@
-/* ===== GLOBAL RESET ===== */
+/* 🌐 GENERAL STYLES */
 * {
   margin: 0;
   padding: 0;
@@ -7,180 +7,256 @@
 }
 
 body {
-  background: #fffaf5;
+  background-color: #fafafa;
   color: #333;
-  overflow-x: hidden;
 }
 
-/* ===== Navbar ===== */
+/* 🌟 NAVBAR */
 .navbar {
+  background-color: #ff914d;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #ff7043;
-  color: white;
   padding: 15px 40px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.logo {
-  font-size: 1.5rem;
+.navbar h1 {
+  font-size: 1.8rem;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .nav-links {
-  list-style: none;
   display: flex;
+  align-items: center;
   gap: 25px;
 }
 
 .nav-links a {
-  color: white;
   text-decoration: none;
+  color: white;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .nav-links a:hover {
   text-decoration: underline;
 }
 
-/* ===== HOME PAGE ===== */
-.home-container {
-  padding: 30px;
+/* 🍱 HOME PAGE */
+.home {
+  padding: 40px;
+  text-align: center;
 }
 
-.home-title {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #ff5722;
+.home h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff6a00;
 }
 
 .recipe-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
+  margin-top: 30px;
 }
 
 .recipe-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .recipe-card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.05);
 }
 
-.recipe-img {
+.recipe-card img {
   width: 100%;
-  height: 180px;
-  border-radius: 12px;
+  height: 200px;
   object-fit: cover;
 }
 
 .recipe-card h3 {
-  margin-top: 15px;
+  margin: 15px;
+  font-size: 1.3rem;
   color: #333;
 }
 
 .recipe-card p {
-  font-size: 0.9em;
-  color: #555;
+  margin: 0 15px 15px 15px;
+  font-size: 0.9rem;
+  color: #666;
 }
 
-.view-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 14px;
-  background: #ff7043;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-.view-btn:hover {
-  background: #e64a19;
-}
-
-/* ===== RECIPE DETAILS ===== */
+/* 🍳 RECIPE DETAILS PAGE */
 .recipe-details {
-  text-align: center;
-  margin: 50px;
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-.back-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 16px;
-  background: #ff7043;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-/* ===== LOGIN & REGISTER ===== */
-.auth-bg {
-  background-image: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.auth-container {
-  width: 380px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 35px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  backdrop-filter: blur(8px);
-}
-
-.auth-container h2 {
-  text-align: center;
-  color: #ff5722;
+.recipe-details img {
+  width: 100%;
+  border-radius: 15px;
+  height: 400px;
+  object-fit: cover;
   margin-bottom: 20px;
 }
 
-.auth-form input {
+.recipe-details h2 {
+  color: #ff6a00;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.recipe-details h3 {
+  margin-top: 20px;
+  color: #333;
+  border-bottom: 2px solid #ff914d;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.recipe-details ul {
+  margin-top: 10px;
+  list-style: disc;
+  margin-left: 30px;
+  color: #555;
+}
+
+.recipe-details p {
+  margin-top: 10px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* 👤 LOGIN & REGISTER (AUTH) */
+.auth-container {
+  background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80")
+    no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-box {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 15px;
+  width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.auth-box h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.auth-box input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid #ccc;
 }
 
-.auth-form button {
+.auth-box button {
   width: 100%;
   padding: 10px;
-  background: #ff7043;
+  background-color: #ff914d;
   color: white;
+  font-weight: bold;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
+  transition: 0.3s;
 }
 
-.auth-form button:hover {
-  background: #e64a19;
+.auth-box button:hover {
+  background-color: #ff6a00;
 }
 
-.auth-container p {
-  text-align: center;
+.auth-box p {
   margin-top: 15px;
 }
 
-.auth-container a {
-  color: #ff7043;
+.link {
+  color: #ff914d;
   text-decoration: none;
+  font-weight: bold;
 }
 
-.auth-container a:hover {
+.link:hover {
   text-decoration: underline;
+}
+
+/* 🧍 PROFILE PAGE */
+.profile-container {
+  padding: 40px;
+  text-align: center;
+}
+
+.profile-container h2 {
+  font-size: 2rem;
+  color: #ff6a00;
+}
+
+/* ➕ ADD RECIPE PAGE */
+.add-recipe {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-recipe h2 {
+  color: #ff6a00;
+  margin-bottom: 20px;
+}
+
+.add-recipe form {
+  width: 400px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-recipe input,
+.add-recipe textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.add-recipe button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff914d;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-recipe button:hover {
+  background-color: #ff6a00;
 }

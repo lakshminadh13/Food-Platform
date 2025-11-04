@@ -1,54 +1,75 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "../index.css";
 
-function Register() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function Register() {
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleChange = (e) =>
+    setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (name && email && password) {
-      alert("Registration successful! Please login.");
-      navigate("/login");
-    } else {
-      alert("Please fill all fields!");
+    // Minimal validation:
+    if (!form.username || !form.email || !form.password) {
+      alert("Please fill all fields");
+      return;
     }
+
+    // Simulate registration success
+    alert("Registration successful — please login");
+    navigate("/login", { replace: true });
   };
 
   return (
-    <div className="auth-bg">
-      <div className="auth-container">
-        <h2>Register</h2>
-        <form className="auth-form" onSubmit={handleRegister}>
+    <div
+      className="auth-container"
+      style={{
+        backgroundImage:
+          'url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80")',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="auth-box">
+        <h2>Create Account</h2>
+
+        <form onSubmit={handleSubmit} className="auth-form">
           <input
-            type="text"
-            placeholder="Enter Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="username"
+            placeholder="Username"
+            value={form.username}
+            onChange={handleChange}
             required
           />
           <input
+            name="email"
             type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
             required
           />
           <input
+            name="password"
             type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
             required
           />
+
           <button type="submit">Register</button>
         </form>
-        <p>Already have an account? <a href="/login">Login</a></p>
+
+        <p style={{ marginTop: 12 }}>
+          Already have an account?{" "}
+          <Link to="/login" className="link">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );
 }
-
-export default Register;
